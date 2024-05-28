@@ -64,6 +64,26 @@ FOREIGN KEY(id_compra) REFERENCES Compras(id_compra),
 FOREIGN KEY(id_comic) REFERENCES Comics(id_comic)
 );
 
+INSERT INTO Comic_Compras(cantidad, id_compra, id_comic) VALUES
+(1, 1, 2),
+(1, 2, 2),
+(1, 3, 2),
+(1, 4, 2),
+(1, 5, 2),
+(1, 6, 2),
+(1, 7, 2),
+(7, 8, 2),
+(5, 9, 2),
+(2, 10, 2),
+(3, 11, 2),
+(4, 12, 2),
+(2, 13, 2),
+(3, 14, 2),
+(1, 15, 2),
+(2, 16, 2),
+(4, 17, 2);
+
+
 
 
 CREATE TABLE Compras(
