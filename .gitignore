@@ -1,3 +1,8 @@
 
 ComicStore.mdf
 ComicStore_log.ldf
+NewDataBasePI_log.ldf
+NewDataBasePI.mdf
+NDBPI.sql
+GraphDB_log.ldf
+GraphDB.mdf
