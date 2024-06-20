@@ -6,9 +6,12 @@
 --set inicializa la variable
 --Es necesario el @ para las variables
 
+/*
 declare @idCliente int
 --inicializar o asignar valor
 set @idCliente = 9
+
+*/
 
 --if 
 
@@ -43,15 +46,50 @@ ELSE
 
 
 --While
+/*
 declare @contador int = 0
 while @contador <=10
 BEGIN
 	print @contador
 	set @contador = @contador + 1
+	if @contador = 3
+	break
+	print('Hola')
 END
 
+print('aqui continua el flujo')
 
+BEGIN TRY
+	set @contador = 'Ivan Isai'
+END TRY
+BEGIN CATCH
+	print('La variable contador solo acepta numeros enteros')
+END CATCH
+print('Soy otra consulta')
+print('yo tambien')
+*/
 
+--
+declare @valor int
+declare @resultado char(10)=''
+set @valor = 30
 
+set @resultado = (
+CASE WHEN @valor = 10 THEN 'ROJO'
+	 WHEN @valor = 20 THEN 'Morado'
+	 WHEN @valor = 30 THEN 'NEGRO'
+	 ELSE 'GRIS'
+	 END
+)
 
-print
+print(@resultado)
+
+SELECT * FROM Inventario;
+
+--Esta es la funcionalidad de un case
+
+select * ,(CASE WHEN disponibilidad = 0x01 THEN 'VERDE'
+				WHEN disponibilidad = 0x00 THEN 'ROJO'
+				ELSE 'NEGRO' 
+				END) AS INDICADOR
+				FROM Inventario
