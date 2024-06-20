@@ -113,3 +113,14 @@ VALUES
 
 
 
+Select * from HistorialVisualizacion;
+
+
+SELECT H.HistorialID, H.PeliculaID, H.UsuarioID, H.FechaVisualizacion,
+U.UsuarioID, U.Nombre, U.Email, U.Pass, U.FechaRegistro, U.Pass,
+P.PeliculaID, P.Titulo, P.Genero, P.FechaEstreno,
+S.SuscripcionID, s.FechaInicio, S.FechaFin, S.Tipo, S.UsuarioID
+FROM HistorialVisualizacion as H
+FULL JOIN Usuarios AS U ON H.UsuarioID = U.UsuarioID
+FULL JOIN Peliculas AS P ON H.PeliculaID = P.PeliculaID
+FULL JOIN Suscripciones AS S on S.UsuarioID = U.UsuarioID
