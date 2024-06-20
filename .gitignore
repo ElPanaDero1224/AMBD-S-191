@@ -6,3 +6,5 @@ NewDataBasePI.mdf
 NDBPI.sql
 GraphDB_log.ldf
 GraphDB.mdf
+PlataformaStreaming_log.ldf
+PlataformaStreaming.mdf
