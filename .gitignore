@@ -10,3 +10,8 @@ PlataformaStreaming_log.ldf
 PlataformaStreaming.mdf
 PI.mdf
 PI_log.ldf
+SQLQuery1.sql
+DB MEDICO/MEDICO.mdf
+DB MEDICO/MEDICO_log.ldf
+DBBank.mdf
+DBBank_log.ldf
