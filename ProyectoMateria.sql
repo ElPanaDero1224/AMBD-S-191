@@ -177,6 +177,7 @@ SELECT * FROM recetas;
 
 
 
+
 CREATE VIEW vw_recetasTratamientos
 AS
 SELECT r.informacion, d.tratamiento, d.dx AS diagnostico ,d.fecha, 
@@ -199,7 +200,9 @@ INNER JOIN roles as r on r.id_rol = m.id_rol;
 
 SELECT * FROM vw_medicosRol;
 
-
+SELECT * FROM vw_recetasTratamientos
+SELECT * FROM vw_medicosRol;
+SELECT * FROM vw_clienteMedico;
 
 
 
@@ -212,15 +215,23 @@ INNER JOIN medicos as m on e.id_medico = m.id_medicos
 INNER JOIN roles as r on r.id_rol = m.id_rol;
 
 
+
+
 SELECT * FROM vw_clienteMedico
 
-SELECT * FROM expedientes
+SELECT * FROM expedientes;
 SELECT * FROM vw_medicosRol
 SELECT * FROM vw_recetasTratamientos
 
 --Diseña y Prueba 4 Procedimientos con transacciones para la BD
 
 -- 1 agg un medico y cambiar su rol
+
+
+
+
+
+
 
 CREATE PROCEDURE InsertarMedico
     @nombres VARCHAR(100),
@@ -251,6 +262,10 @@ SELECT * FROM roles;
 DROP PROCEDURE InsertarMedico;
 
 --2 agg nuevo expendiente y poner otro encargado
+
+
+
+
 
 CREATE PROCEDURE InsertarExpediente
     @nombres VARCHAR(100),
@@ -283,6 +298,10 @@ DROP PROCEDURE InsertarExpediente;
 
 --3 agg nuevo rol y cambiar un rol que ya existe
 
+
+
+
+
 CREATE PROCEDURE InsertarActualizarRol
     @rol_nuevo VARCHAR(50),
     @id_rol_actualizar INT,
@@ -307,6 +326,14 @@ SELECT * FROM roles;
 DROP PROCEDURE InsertarActualizarRol;
 
 --4 agg una nueva receta y cambiar la info de una receta que ya existe
+
+
+
+
+
+
+
+
 
 CREATE PROCEDURE InsertarActualizarReceta
     @informacion_nueva VARCHAR(MAX),
@@ -334,6 +361,9 @@ SELECT * FROM recetas;
 DROP PROCEDURE InsertarActualizarReceta;
 
 SELECT * FROM citas
+
+
+
 
 
 
@@ -380,6 +410,13 @@ EXEC sp_InsertarMedico
 @id_rol = 3;
 SELECT * FROM medicos;
 
+
+
+
+
+
+
+
 ------------------2----------------------
 CREATE PROCEDURE sp_ActualizarMedico
 @id_medicos INT,
@@ -394,8 +431,16 @@ EXEC sp_ActualizarMedico @correo = 'perez@correo.com',@id_medicos = 1 ;
 EXEC sp_ActualizarMedico @correo = 'lopez@correo.com',@id_medicos = 2;
 EXEC sp_ActualizarMedico @correo = 'ramirez@correo.com',@id_medicos = 3;
 EXEC sp_ActualizarMedico @correo = 'carlos.santos@correo.com',@id_medicos = 7;
+SELECT * FROM medicos;
 
 -------------3----------------------------------------------------
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_EliminarExpediente
  @id_expediente INT
 AS
@@ -501,3 +546,21 @@ END;
 EXEC sp_ActualizarExploraciones @peso = 54.29 ,@id_exploracion = 2 ;
 
 SELECT * FROM exploraciones
+
+
+--Vistas
+SELECT * FROM vw_recetasTratamientos
+SELECT * FROM vw_medicosRol;
+SELECT * FROM vw_clienteMedico;
+--TRANSACT
+EXEC InsertarMedico;
+EXEC InsertarExpediente;
+EXEC InsertarActualizarRol
+EXEC InsertarActualizarReceta
+--SP
+EXEC sp_InsertarMedico
+EXEC sp_sp_ActualizarMedico
+EXEC sp_EliminarExpediente
+EXEC sp_InsertarExpediente
+EXEc sp_EliminarMedico
+EXEC sp_ActualizarExploraciones
