@@ -67,7 +67,7 @@ BEGIN
     PRINT 'La suscripción del UsuarioID ' + CAST(@UsuarioID AS NVARCHAR) + ' ha sido actualizada a tipo ' + @Tipo + '.';
 END;
 
-EXEC sp_altSuscripcion
+EXEC sp_altSuscripcion 'Anual', 2;
 
 
 UPDATE Suscripciones
